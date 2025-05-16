@@ -27,4 +27,8 @@ public class UserController {
         System.out.println(all);
         return all;
     }
+    @PutMapping("/update")
+    public void update(@RequestBody User user){
+        service.update(user);
+    }
 }

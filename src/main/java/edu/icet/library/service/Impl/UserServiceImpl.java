@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,5 +30,19 @@ public class UserServiceImpl implements UserService {
             objects.add(mapper.map(userEntity, User.class));
         });
         return objects;
+    }
+
+    @Override
+    public void update(User user) {
+        Optional<UserEntity> existingEmployee = repository.findById(user.getId());
+        if(existingEmployee.isPresent()) {
+            UserEntity entityToUpdate = existingEmployee.get();
+            entityToUpdate.setName(user.getName());
+            entityToUpdate.setEmail(user.getEmail());
+            entityToUpdate.setCreateAt(user.getCreateAt());
+            repository.save(entityToUpdate);
+        } else {
+            throw new RuntimeException("Employee with ID " + user.getId() + " not found.");
+        }
     }
 }
