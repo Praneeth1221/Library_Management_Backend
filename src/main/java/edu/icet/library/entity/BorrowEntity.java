@@ -1,11 +1,13 @@
 package edu.icet.library.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Borrow")
+@Data
 public class BorrowEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,7 +18,7 @@ public class BorrowEntity {
     private UserEntity user;
 
     @ManyToOne
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", referencedColumnName = "isbn")
     private BookEntity book;
 
     @Column(name = "borrowed_at")

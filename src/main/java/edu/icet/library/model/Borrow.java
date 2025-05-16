@@ -4,29 +4,24 @@ import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 
 public class Borrow {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+        private Integer id;
+        private Integer userId;
+        private String bookId;
+        private LocalDateTime borrowedAt;
+        private LocalDateTime dueDate;
+        private LocalDateTime returnedAt;
+    }
 
-    @Column(nullable = false)
-    private Integer user_id;
-
-    @Column(nullable = false)
-    private Integer book_id;
-
-    @CreationTimestamp
-    @Column(name = " borrowed_at",nullable = false)
-    private LocalDateTime borrowAt;
-    @CreationTimestamp
-    @Column(name = "due_date",nullable = false)
-    private LocalDateTime due;
-    @CreationTimestamp
-    @Column(name = " returned_at")
-    private LocalDateTime returnedAt;
-}

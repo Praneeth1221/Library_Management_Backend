@@ -17,8 +17,9 @@ import lombok.ToString;
 @Table(name = "Book")
 public class BookEntity {
     @Id
-    @Column(nullable = false)
-    private String name;
+    @Column(name = "isbn")
+    private String isbn;
+
     @Column(nullable = false)
     private String title;
     @Column(nullable = false)

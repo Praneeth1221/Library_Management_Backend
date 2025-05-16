@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
-        Optional<UserEntity> existingEmployee = repository.findById(user.getId());
+        Optional<UserEntity> existingEmployee = repository.findById(user.getUserid());
         if(existingEmployee.isPresent()) {
             UserEntity entityToUpdate = existingEmployee.get();
             entityToUpdate.setName(user.getName());
@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
             entityToUpdate.setCreateAt(user.getCreateAt());
             repository.save(entityToUpdate);
         } else {
-            throw new RuntimeException("Employee with ID " + user.getId() + " not found.");
+            throw new RuntimeException("Employee with ID " + user.getUserid() + " not found.");
         }
     }
 
