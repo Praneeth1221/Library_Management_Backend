@@ -45,4 +45,9 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("Employee with ID " + user.getId() + " not found.");
         }
     }
+
+    @Override
+    public void delete(Integer id) {
+        repository.deleteById(id);
+    }
 }

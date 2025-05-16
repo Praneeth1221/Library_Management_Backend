@@ -9,4 +9,6 @@ public interface UserService {
     List<User> all();
 
     void update(User user);
+
+    void delete(Integer id);
 }
