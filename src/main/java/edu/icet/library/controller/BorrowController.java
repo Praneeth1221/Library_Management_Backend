@@ -21,5 +21,10 @@ public class BorrowController {
         Borrow response = borrowService.borrowBook(borrowRequest);
         return ResponseEntity.ok(response);
     }
+    @PutMapping("/return/{Id}")
+    public ResponseEntity<Borrow> returnBook(@PathVariable Integer Id) {
+        Borrow returned = borrowService.returnBook(Id);
+        return ResponseEntity.ok(returned);
+    }
 
 }

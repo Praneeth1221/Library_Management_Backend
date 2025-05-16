@@ -6,4 +6,7 @@ import edu.icet.library.model.Borrow;
 public interface BorrowService {
 
     Borrow borrowBook(Borrow borrowRequest);
+
+
+    Borrow returnBook(Integer id);
 }
